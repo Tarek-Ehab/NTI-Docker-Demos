@@ -1,0 +1,23 @@
+docker volume ls
+docker volume create testVolume
+docker volume ls
+docker volume inspect testVolume
+docker volume rm testVolume
+
+docker volume create bigVolume
+
+docker container run -d --name container_1 --hostname container_1 --mount type=volume,source=bigVolume,target=/usr/local/apache2 httpd
+
+dokcer container exec -ti container_1 /bin/bash
+
+touch fileFrom container_1
+
+docker container run -d --name container_2 --hostname container_2 --mount type=volume,source=bigVolume,target=/usr/local/apache2 httpd
+
+dokcer container exec -ti container_2 /bin/bash
+
+touch fileFrom container_2
+
+docker container run -d --name container_3 --hostname container_3 --mount type=volume,source=bigVolume,target=/usr/local/apache2 httpd
+
+ls -l

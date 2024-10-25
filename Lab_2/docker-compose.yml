@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    networks:
+      - frontend
+      - fullstack
+    volumes:
+      - ./html/htdocs/:/usr/local/apache2/htdocs/
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - backend
+      - fullstack
+    volumes:
+      - db_data:/var/lib/mysql
+
+networks:
+  frontend:
+  backend:
+  fullstack:
+
+volumes:
+  db_data:
+
