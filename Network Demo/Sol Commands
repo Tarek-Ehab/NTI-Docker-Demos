@@ -1,0 +1,6 @@
+docker network ls
+docker network create --driver bridge --subnet 182.17.0.0/16 my_network_tarek
+docker network ls
+docker network inspect my_network_tarek
+docker network rm my_network_tarek
+docker run -d --name tarekContainer -p 8080:80 --network my_network_tarek httpd
