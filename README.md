@@ -8,4 +8,4 @@ To run the demos, ensure you have Docker and Docker Compose installed. Clone the
 
 ```bash
 git clone https://github.com/Tarek-Ehab/NTI-Docker-Demos.git
-cd docker-demos-nti
+cd NTI-Docker-Demos
